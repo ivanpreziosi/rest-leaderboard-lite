@@ -1,0 +1,11 @@
+# example .env data
+# copy in .env file and fill with your appropriate data
+
+DBHOST=your_db_host
+DBUSER=your_db_user
+DBPWD=your_db_password
+DBNAME=your_db_name
+SESSLIFETIME=session_lifetime_in_minutes
+TOKENNAME=x-ldb-token
+[PORT=1312 only if you configure your own environment]
+HASHSALT=default_triste_salt
