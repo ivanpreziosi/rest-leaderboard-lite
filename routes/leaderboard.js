@@ -127,7 +127,7 @@ router.post(
     } else {
       // GETTING THE USER FROM HEADER DATA
       var hUsername = req.header("username");
-      var hToken = req.header("x-ldb-token");
+      var hToken = req.header(process.env.TOKENNAME || "x-ldb-token");
 
       // SAVING HISCORE
       console.log("saving score");

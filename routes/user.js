@@ -7,7 +7,7 @@ var md5 = require("js-md5");
 /* LOGOUT FROM APP */
 router.get("/logout", function(req, res, next) {
   var hUsername = req.header("username");
-  var hToken = req.header("x-ldb-token");
+  var hToken = req.header(process.env.TOKENNAME || "x-ldb-token");
 
   var db = require("../app_modules/SqliteInit");
   var sqlUpdate =
@@ -226,7 +226,7 @@ router.post(
           if (result == undefined) {
             next(new Error("Wrong login credentials"));
           } else {
-            var salt = "default_sad_salt";
+            var salt = process.env.HASHSALT || "default_sad_salt";
             var token = md5(
               result.username +
                 salt +
