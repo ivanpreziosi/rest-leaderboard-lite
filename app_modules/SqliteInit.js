@@ -1,6 +1,6 @@
 const fs = require("fs");
 // init sqlite db
-const dbFile = "./.data/leaderboard_sqlite.db";
+const dbFile = "leaderboard_sqlite.db";
 const exists = fs.existsSync(dbFile);
 const sqlite3 = require("sqlite3").verbose();
 const db = new sqlite3.Database(dbFile);
