@@ -2,8 +2,8 @@ var createError = require("http-errors");
 
 exports.checkAuth = async function(request, response, next) {
   var hUsername = request.header("username");
-  var hToken = request.header(process.env.TOKENNAME || "x-ldb-token");
-  var sessionLifetime = process.env.SESSLIFETIME || 1500; //session lifetime in seconds (defaults to 25)
+  var hToken = request.header("x-ldb-token");
+  var sessionLifetime = 25; //session lifetime in seconds (defaults to 25)
 
   var db = require("../app_modules/SqliteInit");
   var sqlSelect =
@@ -52,7 +52,7 @@ exports.checkAuth = async function(request, response, next) {
 
 exports.getHashedPassword = function(plainPwd) {
   var md5 = require("js-md5");
-  var salt = process.env.HASHSALT || "default_sad_salt";
+  var salt = "default_sad_salt";
   var hashedPwd = md5(salt + plainPwd + salt);
   return hashedPwd;
 };
